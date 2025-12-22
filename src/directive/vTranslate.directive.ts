@@ -1,4 +1,4 @@
-import { type DirectiveBinding, Ref, watch } from "vue";
+import { type DirectiveBinding, watch } from "vue";
 import { I18nService } from "../translations/i18n.class";
 
 export const vTranslate = (i18n: I18nService) => ({

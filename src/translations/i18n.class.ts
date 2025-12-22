@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { Observable } from "observable";
+import { Observable } from "@Voikyrioh/observable";
 import { TranslationFile } from "./file-service";
 
 type lang = `${string}-${string}`;
