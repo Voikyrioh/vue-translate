@@ -1,5 +1,5 @@
 {
-  "name": "vue-translate",
+  "name": "@Voikyrioh/vue-translate",
   "version": "1.0.0",
   "description": "Small library to add translation to vue components",
   "author": "Voikyrioh <voikyrioh@gmail.fr> (https://voikyrioh.fr)",
@@ -20,7 +20,17 @@
   "dependencies": {
     "country-flag-icons": "^1.6.4",
     "vue": "^3.2.26",
-    "zod": "^4.2.1"
+    "zod": "^4.2.1",
+    "@Voikyrioh/observable": "^0.1.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/",
+    "scope": "@Voikyrioh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Voikyrioh/vue-translate.git"
   },
   "homepage": "https://github.com/Voikyrioh/vue-translate"
 }
