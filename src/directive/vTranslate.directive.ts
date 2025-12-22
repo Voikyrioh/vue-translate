@@ -1,9 +1,10 @@
-import { type DirectiveBinding, inject } from "vue";
-import type { I18nService } from "../translations/i18n.class.ts";
+import { type DirectiveBinding, Ref, watch } from "vue";
+import { I18nService } from "../translations/i18n.class";
 
-export const vTranslate = {
-    mounted: (el: HTMLElement, binding: DirectiveBinding<string>) => {
-        console.log(binding);
-        el.innerText = inject<I18nService>('i18n')?.getKey(binding.value) ?? binding.value;
+export const vTranslate = (i18n: I18nService) => ({
+    async mounted(el: HTMLElement, binding: DirectiveBinding<string>) {
+        el.innerText = await i18n.getKey(binding.value) ?? binding.value
+        i18n.ready.subscribe(console.log)
+        watch(i18n.languageRef, async () => el.innerText = await i18n.getKey(binding.value) ?? binding.value)
     }
-}
+})
