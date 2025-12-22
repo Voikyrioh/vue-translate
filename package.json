@@ -11,7 +11,6 @@
   "scripts": {
     "ci": "vue-tsc -p tsconfig.json --noEmit"
   },
-  "private": true,
   "devDependencies": {
     "@types/node": "^24",
     "typescript": "^5.9.3"
