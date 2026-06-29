@@ -11,6 +11,8 @@ A lightweight, reactive, and type-safe translation library for **Vue 3**, powere
 - 🚀 **Reactive Core**: Built on top of Vue 3's Reactivity API.
 - 🛡️ **Type Safe**: Fully written in TypeScript with Zod validation for translation files.
 - 🧩 **Directive Based**: Simple `v-translate` directive for quick integration.
+- 🪝 **Composable**: `useTranslate()` exposes a reactive `t(key, params)` for scripts and `{{ }}`.
+- 🔣 **Interpolation**: `{name}` placeholders replaced at runtime from params.
 - 📦 **Zero-Friction Components**: Includes a built-in language selector with flag support.
 - 📡 **Observable Powered**: Asynchronous file loading with `@Voikyrioh/observable`.
 - 👨‍💻 **Rich Text Support**: Basic pattern replacement for code tags in translations.
@@ -51,6 +53,25 @@ The easiest way to translate text is using the `v-translate` directive. It will 
 <p v-translate:key="'welcome_message'"></p>
 ```
 
+#### Using the Composable (with interpolation)
+For dynamic values, use `useTranslate()`. The returned `t` is reactive — it updates on language switch and once the file loads.
+```vue
+<script setup lang="ts">
+import { useTranslate } from '@Voikyrioh/vue-translate'
+const { t } = useTranslate()
+</script>
+
+<template>
+  <p>{{ t('confirm.transfer', { pseudo: 'Voiky' }) }}</p>
+  <span>{{ t('users.count', { count: 12 }) }}</span>
+</template>
+```
+
+The directive also accepts params via an object binding:
+```vue
+<p v-translate="{ key: 'confirm.transfer', params: { pseudo } }"></p>
+```
+
 #### Using the Language Selector
 Use the built-in component to let users switch languages (includes flags via `country-flag-icons`):
 ```vue 
@@ -60,10 +81,10 @@ Use the built-in component to let users switch languages (includes flags via `co
 
 ### 3. Translation File Format
 
-Your remote JSON files should be a flat key-value pair object. You can use `#text#` to wrap content in `<code>` tags:
+Your remote JSON files should be a flat key-value pair object. Use `#text#` to wrap content in `<code>` tags, and `{name}` placeholders for runtime interpolation:
 
 ```json 
-  { "welcome_message": "Welcome to our #Vue 3# App!", "description": "Simple and fast." }
+  { "welcome_message": "Welcome to our #Vue 3# App!", "confirm.transfer": "Transfer superadmin to {pseudo}?" }
 ```
 
 ## 🛠️ Configuration Options

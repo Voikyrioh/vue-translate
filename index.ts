@@ -12,4 +12,6 @@ export default {
     }
 } as Plugin<{ availableLanguage: `${string}-${string}`[], translationFilesUrl: string, defaultLang: `${string}-${string}` }>
 
+export { useTranslate } from "./src/composable/useTranslate"
+export type { TranslateParams } from "./src/composable/useTranslate"
 export type { I18nService }

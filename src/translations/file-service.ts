@@ -15,7 +15,11 @@ export class TranslationFile {
             ).parse(translations);
     }
 
-    get(key: string) {
-        return this.translations[key] ?? key;
+    get(key: string, params?: Record<string, string | number>) {
+        const raw = this.translations[key] ?? key;
+        if (!params) return raw;
+        return raw.replace(/\{(\w+)\}/g, (match, name: string) =>
+            name in params ? String(params[name]) : match
+        );
     }
 }

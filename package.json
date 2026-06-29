@@ -1,6 +1,6 @@
 {
   "name": "@Voikyrioh/vue-translate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Small library to add translation to vue components",
   "author": "Voikyrioh <voikyrioh@gmail.fr> (https://voikyrioh.fr)",
   "main": "index.ts",
